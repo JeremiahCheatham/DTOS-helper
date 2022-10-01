@@ -1,0 +1,114 @@
+255,255,255 #ffffff [Colors:View] BackgroundNormal
+247,247,247 #f7f7f7 [Colors:View] BackgroundAlternate
+239,240,241 #eff0f1 [Colors:Window] BackgroundNormal
+227,229,231 #e3e5e7 [Colors:Window] BackgroundAlternate
+56,56,56    #383838 [ColorEffects:Disabled] Color
+112,111,110 #706f6e [ColorEffects:Inactive] Color
+112,125,138 #707d8a ForegroundInactive
+35,38,41    #232629 ForegroundNormal
+
+
+218,68,83	#da4453 ForegroundNegative
+246,116,0   #f67400 ForegroundNeutral
+39,174,96   #27ae60 ForegroundPositive
+155,89,182	#9b59b6 ForegroundVisited
+
+
+61,174,233  #3daee9 [Colors:Complementary] ForegroundActive
+29,153,243  #1d99f3 [Colors:Complementary] ForegroundLink
+41,128,185  #2980b9 [Colors:Selection] ForegroundLink
+
+163,212,250 #a3d4fa [Colors:Button] [Colors:Selection] BackgroundAlternate
+
+
+27,30,32   	#1b1e20 [Colors:Complementary] BackgroundAlternate
+42,46,50    #2a2e32 [Colors:Complementary] BackgroundNormal
+161,169,177 #a1a9b1 [Colors:Complementary] ForegroundInactive
+252,252,252 #fcfcfc [Colors:Complementary] ForegroundNormal
+
+
+222,224,226 #dee0e2 [Colors:Header] BackgroundNormal
+
+
+
+
+[ColorEffects:Disabled]
+Color=56,56,56
+
+
+[ColorEffects:Inactive]
+Color=112,111,110
+
+
+[Colors:Button] [Colors:Complementary] [Colors:Header] [Colors:Header][Inactive] [Colors:Selection] [Colors:Tooltip] [Colors:View] [Colors:Window]
+ForegroundActive=61,174,233
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+
+[Colors:Button] [Colors:Header] [Colors:Header][Inactive] [Colors:Selection] [Colors:Tooltip] [Colors:View] [Colors:Window]
+ForegroundInactive=112,125,138
+ForegroundLink=41,128,185
+
+
+[Colors:Button] [Colors:Selection]
+BackgroundAlternate=163,212,250
+
+
+[Colors:Button] [Colors:Tooltip]
+BackgroundNormal=247,247,247
+
+
+[Colors:Button] [Colors:Header] [Colors:Header][Inactive] [Colors:Tooltip] [Colors:View] [Colors:Window]
+ForegroundNormal=35,38,41
+
+
+[Colors:Complementary]
+BackgroundAlternate=27,30,32
+BackgroundNormal=42,46,50
+ForegroundInactive=161,169,177
+ForegroundLink=29,153,243
+ForegroundNormal=252,252,252
+
+
+[Colors:Header] [Colors:Tooltip]
+BackgroundAlternate=239,240,241
+
+
+[Colors:Header]
+BackgroundNormal=222,224,226
+
+
+[Colors:Header][Inactive] [Colors:Window]
+BackgroundAlternate=227,229,231
+BackgroundNormal=239,240,241
+
+
+[Colors:Selection]
+BackgroundNormal=61,174,233
+ForegroundNormal=255,255,255
+
+
+[Colors:View]
+BackgroundAlternate=247,247,247
+BackgroundNormal=255,255,255
+
+
+
+[General]
+ColorScheme=Breeze Light
+Name=Breeze Light
+shadeSortColumn=true
+
+
+[WM]
+activeBackground=227,229,231
+activeBlend=227,229,231
+activeForeground=35,38,41
+inactiveBackground=239,240,241
+inactiveBlend=239,240,241
+inactiveForeground=112,125,138

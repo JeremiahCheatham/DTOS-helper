@@ -1,0 +1,125 @@
+#!/bin/bash
+
+if [ ! -f $1 ]
+then
+    exit
+fi
+
+myFullname=$(grep myFullname $1 | cut -f 2 -d '"' )
+myKdefile=$(grep myKdefile $1 | cut -f 2 -d '"' )
+myGtkfolder=$(grep myGtkfolder $1 | cut -f 2 -d '"' )
+myBackground1=$(grep myBackground1 $1 | cut -f 2 -d '"' )
+myBackground2=$(grep myBackground2 $1 | cut -f 2 -d '"' )
+myBackground3=$(grep myBackground3 $1 | cut -f 2 -d '"' )
+myBackground4=$(grep myBackground4 $1 | cut -f 2 -d '"' )
+myDisabled=$(grep myDisabled $1 | cut -f 2 -d '"' )
+myBorder=$(grep myBorder $1 | cut -f 2 -d '"' )
+myInactive=$(grep myInactive $1 | cut -f 2 -d '"' )
+myForeground2=$(grep myForeground2 $1 | cut -f 2 -d '"' )
+myForeground1=$(grep myForeground1 $1 | cut -f 2 -d '"' )
+myError=$(grep myError $1 | cut -f 2 -d '"' )
+myWarn=$(grep myWarn $1 | cut -f 2 -d '"' )
+mySuccess=$(grep mySuccess $1 | cut -f 2 -d '"' )
+myAccent1=$(grep myAccent1 $1 | cut -f 2 -d '"' )
+myAccent2=$(grep myAccent2 $1 | cut -f 2 -d '"' )
+myVisited=$(grep myVisited $1 | cut -f 2 -d '"' )
+
+
+# Convert Hex to RGB colors
+myRgbBackground1=$( printf "%d,%d,%d" 0x${myBackground1:1:2} 0x${myBackground1:3:2} 0x${myBackground1:5:2} )
+myRgbBackground2=$( printf "%d,%d,%d" 0x${myBackground2:1:2} 0x${myBackground2:3:2} 0x${myBackground2:5:2} )
+myRgbBackground3=$( printf "%d,%d,%d" 0x${myBackground3:1:2} 0x${myBackground3:3:2} 0x${myBackground3:5:2} )
+myRgbBackground4=$( printf "%d,%d,%d" 0x${myBackground4:1:2} 0x${myBackground4:3:2} 0x${myBackground4:5:2} )
+myRgbDisabled=$( printf "%d,%d,%d" 0x${myDisabled:1:2} 0x${myDisabled:3:2} 0x${myDisabled:5:2} )
+myRgbBorder=$( printf "%d,%d,%d" 0x${myBorder:1:2} 0x${myBorder:3:2} 0x${myBorder:5:2} )
+myRgbInactive=$( printf "%d,%d,%d" 0x${myInactive:1:2} 0x${myInactive:3:2} 0x${myInactive:5:2} )
+myRgbForeground2=$( printf "%d,%d,%d" 0x${myForeground2:1:2} 0x${myForeground2:3:2} 0x${myForeground2:5:2} )
+myRgbForeground1=$( printf "%d,%d,%d" 0x${myForeground1:1:2} 0x${myForeground1:3:2} 0x${myForeground1:5:2} )
+myRgbError=$( printf "%d,%d,%d" 0x${myError:1:2} 0x${myError:3:2} 0x${myError:5:2} )
+myRgbWarn=$( printf "%d,%d,%d" 0x${myWarn:1:2} 0x${myWarn:3:2} 0x${myWarn:5:2} )
+myRgbSuccess=$( printf "%d,%d,%d" 0x${mySuccess:1:2} 0x${mySuccess:3:2} 0x${mySuccess:5:2} )
+myRgbAccent1=$( printf "%d,%d,%d" 0x${myAccent1:1:2} 0x${myAccent1:3:2} 0x${myAccent1:5:2} )
+myRgbAccent2=$( printf "%d,%d,%d" 0x${myAccent2:1:2} 0x${myAccent2:3:2} 0x${myAccent2:5:2} )
+myRgbVisited=$( printf "%d,%d,%d" 0x${myVisited:1:2} 0x${myVisited:3:2} 0x${myVisited:5:2} )
+
+
+# Create KDE colors.
+/bin/cp kde-dark-template $myKdefile
+sed -i "s/myRgbBackground1/$myRgbBackground1/" $myKdefile
+sed -i "s/myRgbBackground2/$myRgbBackground2/" $myKdefile
+sed -i "s/myRgbBackground3/$myRgbBackground3/" $myKdefile
+sed -i "s/myRgbBackground4/$myRgbBackground4/" $myKdefile
+sed -i "s/myRgbDisabled/$myRgbDisabled/" $myKdefile
+sed -i "s/myRgbInactive/$myRgbInactive/" $myKdefile
+sed -i "s/myRgbForeground2/$myRgbForeground2/" $myKdefile
+sed -i "s/myRgbForeground1/$myRgbForeground1/" $myKdefile
+sed -i "s/myRgbError/$myRgbError/" $myKdefile
+sed -i "s/myRgbWarn/$myRgbWarn/" $myKdefile
+sed -i "s/myRgbSuccess/$myRgbSuccess/" $myKdefile
+sed -i "s/myRgbAccent1/$myRgbAccent1/" $myKdefile
+sed -i "s/myRgbAccent2/$myRgbAccent2/" $myKdefile
+sed -i "s/myRgbVisited/$myRgbVisited/" $myKdefile
+sed -i "s/ColorScheme=/ColorScheme=$myFullname/" $myKdefile
+sed -i "s/Name=/Name=$myFullname/" $myKdefile
+
+
+/bin/cp -rf breeze-dark-template $myGtkfolder
+
+sed -i "s/myBackground1/$myBackground1/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myBackground3/$myBackground3/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myBackground4/$myBackground4/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myBorder/$myBorder/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myForeground1/$myForeground1/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myInactive/$myInactive/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myAccent1/$myAccent1/" $myGtkfolder/gtk-2.0/gtkrc
+sed -i "s/myAccent2/$myAccent2/" $myGtkfolder/gtk-2.0/gtkrc
+
+
+sed -i "s/myBackground1/$myBackground1/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myBackground3/$myBackground3/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myBackground4/$myBackground4/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myBorder/$myBorder/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myInactive/$myInactive/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myForeground2/$myForeground2/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myForeground1/$myForeground1/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myError/$myError/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myWarn/$myWarn/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/mySuccess/$mySuccess/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myAccent1/$myAccent1/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myAccent2/$myAccent2/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myVisited/$myVisited/" $myGtkfolder/gtk-3.0/gtk.css
+
+sed -i "s/myRgbBackground4/$myRgbBackground4/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbBorder/$myRgbBorder/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbForeground2/$myRgbForeground2/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbForeground1/$myRgbForeground1/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbError/$myRgbError/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbWarn/$myRgbWarn/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbSuccess/$myRgbSuccess/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbAccent1/$myRgbAccent1/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbAccent2/$myRgbAccent2/" $myGtkfolder/gtk-3.0/gtk.css
+
+
+sed -i "s/myBackground1/$myBackground1/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myBackground3/$myBackground3/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myBackground4/$myBackground4/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myBorder/$myBorder/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myInactive/$myInactive/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myForeground2/$myForeground2/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myForeground1/$myForeground1/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myError/$myError/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myWarn/$myWarn/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/mySuccess/$mySuccess/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myAccent1/$myAccent1/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myAccent2/$myAccent2/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myVisited/$myVisited/" $myGtkfolder/gtk-4.0/gtk.css
+
+sed -i "s/myRgbBackground4/$myRgbBackground4/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbBorder/$myRgbBorder/" $myGtkfolder/gtk-3.0/gtk.css
+sed -i "s/myRgbForeground2/$myRgbForeground2/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbForeground1/$myRgbForeground1/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbError/$myRgbError/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbWarn/$myRgbWarn/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbSuccess/$myRgbSuccess/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbAccent1/$myRgbAccent1/" $myGtkfolder/gtk-4.0/gtk.css
+sed -i "s/myRgbAccent2/$myRgbAccent2/" $myGtkfolder/gtk-4.0/gtk.css

@@ -1,0 +1,29 @@
+"Doom Palenight"          myFullname
+"DoomPalenight.colors"    myKdefile
+"Doom-Palenight"          myGtkfolder
+
+# DoomEmacs Doom Palenight Colors
+base0      "#1c1f2b"   # myBackground1
+base1      "#1e212e"
+base2      "#232635"   # myBackground2 myAccent2
+bg-alt     "#242837"
+bg         "#292D3E"   # myBackground3
+base3      "#3C435E"   # myBackground4
+base4      "#4E5579"   # myDisabled
+base5      "#676E95"   # myBorder
+base6      "#697098"   # myInactive
+base7      "#717CB4"
+base8      "#A6Accd"   # myForeground2
+fg-alt     "#BFC7D5"
+fg         "#EEFFFF"   # myForeground1
+red        "#ff5370"   # myError
+orange     "#f78c6c"   # myWarn
+green      "#c3e88d"   # mySuccess
+teal       "#44b9b1"
+yellow     "#ffcb6b"
+blue       "#82aaff"
+dark-blue  "#7986E7"
+magenta    "#c792ea"   # myVisited
+violet     "#bb80b3"
+cyan       "#89DDFF"   # myAccent1
+dark-cyan  "#80cbc4"

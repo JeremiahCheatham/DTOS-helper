@@ -1,0 +1,29 @@
+"Doom Nord"          myFullname
+"DoomNord.colors"    myKdefile
+"Doom-Nord"          myGtkfolder
+
+# DoomEmacs Doom Nord Colors
+base0      "#191C25"   # myBackground1
+bg-alt     "#272C36"
+base1      "#242832"   # myBackground2 myAccent2
+base2      "#2C333F"
+bg         "#2E3440"   # myBackground3
+base3      "#373E4C"   # myBackground4
+base4      "#434C5E"   # myDisabled
+base5      "#4C566A"   # myBorder
+base6      "#9099AB"   # myInactive
+base7      "#D8DEE9"
+fg-alt     "#E5E9F0"   # myForeground2
+fg         "#ECEFF4"
+base8      "#F0F4FC"   # myForeground1
+red        "#BF616A"   # myError
+orange     "#D08770"   # myWarn
+green      "#A3BE8C"   # mySuccess
+teal       "#8FBCBB"   # myAccent1
+yellow     "#EBCB8B"
+blue       "#81A1C1"
+dark-blue  "#5E81AC"
+magenta    "#B48EAD"   # myVisited
+violet     "#5D80AE"
+cyan       "#88C0D0"
+dark-cyan  "#507681"

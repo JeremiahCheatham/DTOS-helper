@@ -1,0 +1,29 @@
+"Doom Dracula"          myFullname
+"DoomDracula.colors"    myKdefile
+"Doom-Dracula"          myGtkfolder
+
+# DoomEmacs Doom Dracula Colors
+bg-alt     "#1E2029"   # myBackground1
+base0      "#1E2029"
+bg         "#282a36"   # myBackground2 myAccent2
+base1      "#282a36"
+base2      "#373844"   # myBackground3
+base3      "#44475a"   # myBackground4
+base4      "#565761"   # myDisabled
+base5      "#6272a4"   # myBorder
+base6      "#b6b6b2"   # myInactive
+base7      "#ccccc7"
+fg-alt     "#e2e2dc"   # myForeground2
+base8      "#f8f8f2"
+fg         "#f8f8f2"   # myForeground1
+red        "#ff5555"   # myError
+orange     "#ffb86c"   # myWarn
+green      "#50fa7b"   # mySuccess
+teal       "#0189cc"
+yellow     "#f1fa8c"
+blue       "#61bfff"
+dark-blue  "#0189cc"
+magenta    "#ff79c6"   # myVisited
+violet     "#bd93f9"
+cyan       "#8be9fd"   # myAccent1
+dark-cyan  "#8be9fd"

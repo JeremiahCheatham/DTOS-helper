@@ -1,0 +1,99 @@
+27,30,32    #1b1e20 [Colors:View] BackgroundNormal
+35,38,41    #232629 [Colors:View] BackgroundAlternate
+42,46,50    #2a2e32 [Colors:Window] BackgroundNormal
+49,54,59    #31363b [Colors:Window] BackgroundAlternate
+56,56,56    #383838 [ColorEffects:Disabled] Color
+112,111,110 #706f6e [ColorEffects:Inactive] Color
+161,169,177 #a1a9b1 ForegroundInactive
+252,252,252 #fcfcfc ForegroundNormal
+
+
+218,68,83	#da4453 ForegroundNegative
+246,116,0   #f67400 ForegroundNeutral
+39,174,96   #27ae60 ForegroundPositive
+155,89,182	#9b59b6 ForegroundVisited
+
+
+61,174,233  #3daee9 [Colors:Complementary] ForegroundActive
+29,153,243  #1d99f3 [Colors:Complementary] ForegroundLink
+253,188,75  #fdbc4b [Colors:Selection] ForegroundLink
+
+30,87,116   #1e5774 [Colors:Button] [Colors:Complementary] [Colors:Selection] BackgroundAlternate
+
+
+
+
+
+[ColorEffects:Disabled]
+Color=56,56,56
+
+
+[ColorEffects:Inactive]
+Color=112,111,110
+
+
+[Colors:Button] [Colors:Complementary] [Colors:Selection]
+BackgroundAlternate=30,87,116
+
+
+[Colors:Button] [Colors:Complementary] [Colors:Header] [Colors:Header][Inactive] [Colors:Selection] [Colors:Tooltip] [Colors:View] [Colors:Window] [General]
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundInactive=161,169,177
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=252,252,252
+ForegroundPositive=39,174,96
+ForegroundVisited=155,89,182
+
+
+
+[Colors:Button] [Colors:Complementary] [Colors:Header] [Colors:Header][Inactive] [Colors:Tooltip] [Colors:View] [Colors:Window] [General]
+ForegroundActive=61,174,233
+ForegroundLink=29,153,243
+
+
+
+[Colors:Button] [Colors:Header] [Colors:Tooltip]
+BackgroundNormal=49,54,59
+
+
+
+[Colors:Complementary] [Colors:Header][Inactive] [Colors:Window]
+BackgroundNormal=42,46,50
+
+
+[Colors:Header] [Colors:Tooltip]
+BackgroundAlternate=42,46,50
+
+
+[Colors:Header][Inactive] [Colors:Window]
+BackgroundAlternate=49,54,59
+
+
+[Colors:Selection]
+BackgroundNormal=61,174,233
+ForegroundActive=252,252,252
+ForegroundLink=253,188,75
+
+
+[Colors:View]
+BackgroundAlternate=35,38,41
+BackgroundNormal=27,30,32
+
+
+[General]
+ColorScheme=Breeze Dark
+Name=Breeze Dark
+shadeSortColumn=true
+
+[KDE]
+contrast=4
+
+[WM]
+activeBackground=49,54,59
+activeBlend=252,252,252
+activeForeground=252,252,252
+inactiveBackground=42,46,50
+inactiveBlend=161,169,177
+inactiveForeground=161,169,177

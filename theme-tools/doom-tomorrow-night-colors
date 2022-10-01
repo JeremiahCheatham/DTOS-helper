@@ -1,0 +1,28 @@
+"Doom Tomorrow Night"          myFullname
+"DoomTomorrowNight.colors"     myKdefile
+"Doom-Tomorrow-Night"          myGtkfolder
+
+# DoomEmacs Doom Tomorrow Night Colors
+base0      "#0d0d0d"   # myBackground1
+bg-alt     "#161719"
+base1      "#1b1b1b"   # myBackground2 myAccent2
+bg         "#1d1f21"
+base2      "#212122"   # myBackground3
+base3      "#292b2b"   # myBackground4
+base4      "#3f4040"   # myDisabled
+base5      "#5c5e5e"   # myBorder
+base6      "#757878"   # myInactive
+base7      "#969896"
+fg         "#c5c8c6"   # myForeground2
+base8      "#ffffff"   # myForeground1
+grey       "#5a5b5a"
+red        "#cc6666"   # myError
+orange     "#de935f"   # myWarn
+yellow     "#f0c674"
+green      "#b5bd68"   # mySuccess
+blue       "#81a2be"   # myAccent1
+dark-blue  "#41728e"
+teal       "#81a2be"
+magenta    "#c9b4cf"   # myVisited
+violet     "#b294bb"
+cyan       "#8abeb7"

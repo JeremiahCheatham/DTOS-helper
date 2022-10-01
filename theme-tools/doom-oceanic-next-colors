@@ -1,0 +1,30 @@
+"Doom Oceanic Next"          myFullname
+"DoomOceanicNext.colors"     myKdefile
+"Doom-Oceanic-Next"          myGtkfolder
+
+# DoomEmacs Doom Oceanic Next Colors
+bg-alt     "#14232D"
+base0      "#1B2B34"   # myBackground1
+bg         "#1B2B34"   # myBackground2 myAccent2
+base1      "#343D46"   # myBackground3
+base2      "#4F5B66"   # myBackground4
+base3      "#65737E"   # myDisabled  myBorder
+base4      "#A7ADBA"   # myInactive
+base5      "#C0C5CE"
+base6      "#CDD3DE"   # myForeground2
+fg-alt     "#CDD3DE"
+base7      "#D8DEE9"   # myForeground1
+base8      "#D8DEE9"
+fg         "#D8DEE9"
+grey       "#A7ADBA"
+red        "#EC5f67"   # myError
+orange     "#F99157"   # myWarn
+green      "#99C794"   # mySuccess
+teal       "#5FB3B3"   # myAccent1
+yellow     "#FAC863"
+blue       "#6699CC"
+dark-blue  "#6699CC"
+magenta    "#E27E8D"   # myVisited
+violet     "#C594C5"
+cyan       "#5FB3B3"
+dark-cyan  "#5FB3B3"

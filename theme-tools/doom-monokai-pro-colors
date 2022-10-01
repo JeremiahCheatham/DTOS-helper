@@ -1,0 +1,30 @@
+"Doom Monokai Pro"       myFullname
+"DoomMonokaiPro.colors"  myKdefile
+"Doom-Monokai-Pro"       myGtkfolder
+
+# DoomEmacs Doom Monokai Pro Colors
+base0      "#19181A"   # myBackground1
+base1      "#1B1B1B"
+bg-alt     "#221F22"   # myBackground2 myAccent2
+base2      "#212122"
+base3      "#2B2B2B"   # myBackground3
+bg         "#2D2A2E"
+base4      "#383539"   # myBackground4
+base5      "#4C4A4D"   # myVisited myDisabled
+base6      "#727072"   # myBorder
+fg-alt     "#939293"   # myInactive
+base7      "#c1c0c0"   # myForeground2
+base8      "#FCFCFA"
+fg         "#FCFCFA"   # myForeground1
+grey       "#727072"
+red        "#CC6666"   # myError
+orange     "#FC9867"   # myWarn
+green      "#A9DC76"   # mySuccess
+teal       "#A9DC76"
+yellow     "#FFD866"
+blue       "#78DCE8"   # myAccent1
+dark-blue  "#81A2BE"
+magenta    "#FF6188"
+violet     "#AB9DF2"
+cyan       "#78DCE8"
+dark-cyan  "#81A2BE"

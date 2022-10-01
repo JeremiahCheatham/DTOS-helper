@@ -1,0 +1,29 @@
+"Doom Solarized Dark"          myFullname
+"DoomSolarizedDark.colors"     myKdefile
+"Doom-Solarized-Dark"          myGtkfolder
+
+# DoomEmacs Doom Solarized Dark Colors
+bg-alt     "#00212B"   # myBackground1
+base2      "#00212C"
+bg         "#002b36"   # myBackground2 myAccent2
+base1      "#03282F"
+base3      "#13383C"   # myBackground3
+base0      "#073642"   # myBackground4
+base5      "#405A61"   # myDisabled
+base4      "#56697A"   # myBorder
+base8      "#626C6C"   # myInactive
+fg-alt     "#657b83"
+base7      "#788484"   # myForeground2
+base6      "#96A7A9"   # myAccent1
+fg         "#BBBBBB"   # myForeground1
+red        "#dc322f"   # myError
+orange     "#cb4b16"   # myWarn
+green      "#859900"   # mySuccess
+teal       "#35a69c"
+yellow     "#b58900"
+blue       "#268bd2"
+dark-blue  "#3F88AD"
+magenta    "#d33682"   # myVisited
+violet     "#6c71c4"
+cyan       "#2aa198"
+dark-cyan  "#204052"

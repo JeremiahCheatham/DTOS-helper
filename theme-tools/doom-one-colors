@@ -1,0 +1,29 @@
+"Doom One"          myFullname
+"DoomOne.colors"    myKdefile
+"Doom-One"          myGtkfolder
+
+# DoomEmacs Doom One Colors
+base0       "#1B2229"
+base1       "#1c1f24"   # myBackground1
+base2       "#202328"
+bg-alt      "#21242b"   # myBackground2 myAccent2
+base3       "#23272e"   # myBackground3
+bg          "#282c34"   # myBackground4
+base4       "#3f444a"   # myDisabled
+base5       "#5B6268"   # myBorder
+fg-alt      "#5B6268"
+base6       "#73797e"   # myInactive
+base7       "#9ca0a4"   # myForeground2
+fg          "#bbc2cf"
+base8       "#dfdfdf"   # myForeground1
+red         "#ff6c6b"   # myError
+orange      "#da8548"   # myWarn
+green       "#98be65"   # mySuccess
+teal        "#4db5bd"
+yellow      "#ECBE7B"
+blue        "#51afef"   # myAccent1
+dark-blue   "#2257A0"
+magenta     "#c678dd"   # myVisited
+violet      "#a9a1e1"
+cyan        "#46D9FF"
+dark-cyan   "#5699AF"
