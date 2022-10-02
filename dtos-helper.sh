@@ -35,9 +35,9 @@ echo "36 Install needed System packages"
 echo "37 Install needed Utilities packages"
 echo "   -------------- Other ----------------"
 echo "40 Use pulseaudio for extended volume."
-echo "41 Fix tearing for amd gpus."
-echo "42 Disable NaturalScrolling direction."
-echo "43 Give firefox wayland support."
+echo "41 Disable NaturalScrolling direction."
+echo "42 Fix tearing for amd gpus."
+echo "43 Fix tearing for intel gpus."
 echo ""
 echo "50 Quit"
 
@@ -487,8 +487,18 @@ if [ $CHOICE -eq 40 ]
 end
 
 if [ $CHOICE -eq 41 ]
+    # Disable NaturalScrolling direction.
+    if [ -f /etc/X11/xorg.conf.d/30-touchpad.conf ]
+        echo "Setting NaturalScrolling to false."
+        sudo sed -i 's/"NaturalScrolling" "true"/"NaturalScrolling" "false"/' /etc/X11/xorg.conf.d/30-touchpad.conf
+    else
+        echo "TouchPad config file not found. Generate it first."
+    end
+end
+
+if [ $CHOICE -eq 42 ]
     # Fix tearing for amd gpus.
-    echo "Generate /etc/X11/xorg.conf.d/20-amdgpu.conf"
+    echo "Generate /etc/X11/xorg.conf.d/20-amdgpu.conf."
     sudo bash -c 'cat << EOF > /etc/X11/xorg.conf.d/20-amdgpu.conf
 Section "Device"
     Identifier "AMD"
@@ -500,30 +510,18 @@ EOF'
     echo "You may need to reboot to see changes."
 end
 
-if [ $CHOICE -eq 42 ]
-    # Disable NaturalScrolling direction.
-    if [ -f /etc/X11/xorg.conf.d/30-touchpad.conf ]
-        echo "Setting NaturalScrolling to false."
-        sudo sed -i 's/"NaturalScrolling" "true"/"NaturalScrolling" "false"/' /etc/X11/xorg.conf.d/30-touchpad.conf
-    else
-        echo "TouchPad config file not found. Generate it first."
-    end
-end
-
 if [ $CHOICE -eq 43 ]
-    # Let firefox use wayland when in a wayland session.
-    if grep -R "MOZ_ENABLE_WAYLAND=1" /etc/profile > /dev/null
-        echo "Cool MOZ_ENABLE_WAYLAND=1 found in /etc/profile"
-    else
-        echo "Adding MOZ_ENABLE_WAYLAND=1 to /etc/profile"
-        sudo bash -c "cat << EOF >> /etc/profile
-
-# Enable Wayland for Firefox when needed.
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
-EOF"
-    end
+    # Fix tearing for intel gpus.
+    echo "Generate /etc/X11/xorg.conf.d/20-intel.conf."
+    sudo bash -c 'cat << EOF > /etc/X11/xorg.conf.d/20-intel.conf
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "intel"
+    Option "TearFree" "true"
+    Option "TripleBuffer" "true"
+EndSection
+EOF'
+    echo "You may need to reboot to see changes."
 end
 
 if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 27 ] || [ $CHOICE -eq 29 ] || [ $CHOICE -eq 40 ]

@@ -10,6 +10,7 @@ echo "10 Install full set of fonts."
 echo "11 Install Theme addons for QT, GTK2/3/4."
 echo "12 Create config files for QT, GTK2/3/4."
 echo "13 Set Systems fonts to Noto Sans & Hack"
+echo "14 Switch Adwaita to breeze_cursors."
 echo "   ----------- CHANGE CONKY -----------"
 echo "20 Switch to Advanced Conky."
 echo "21 Advanced Conky with Hotkeys."
@@ -49,21 +50,8 @@ if [ $CHOICE -eq 2 ]
     # Preset for 768x1366 14inch
     set NEWFONTSIZE 10
     set NEWXFONTSIZE 10
-    set CFONTSIZE1 7
+    set CFONTSIZE1 8
     set VCFONTSIZE 18
-end
-
-if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
-    # Conky font size for presets.
-    set LINENUMBERS ( grep -n size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 1 -d ":" )
-    set CFONTSIZE2 (printf %.0f (echo "$CFONTSIZE1 * 3.5" | bc))
-    set CFONTSIZE3 (printf %.0f (echo "$CFONTSIZE1 * 1.5" | bc))
-    set CFONTSIZE4 (printf %.0f (echo "$CFONTSIZE1 * 1.1" | bc))
-    sed -i "$LINENUMBERS[1] s/size=[0-9]*/size=$CFONTSIZE1/" $HOME/.config/conky/xmonad/*.conkyrc
-    sed -i "$LINENUMBERS[2] s/size=[0-9]*/size=$CFONTSIZE2/" $HOME/.config/conky/xmonad/*.conkyrc
-    sed -i "$LINENUMBERS[3] s/size=[0-9]*/size=$CFONTSIZE3/" $HOME/.config/conky/xmonad/*.conkyrc
-    sed -i "$LINENUMBERS[4] s/size=[0-9]*/size=$CFONTSIZE4/" $HOME/.config/conky/xmonad/*.conkyrc
-    echo "Setting font size $CFONTSIZE1 for Conky."
 end
 
 if [ $CHOICE -eq 3 ]
@@ -80,6 +68,8 @@ end
 
 if [ $CHOICE -eq 11 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Install added themes for QT, GTK2, GKT3 and GTK4
+    echo "Install breeze and breeze-gtk."
+    pacman -S --needed breeze breeze-gtk
     if [ ! -d $HOME/.config/conky/xmonad ]
         mkdir -p $HOME/.config/conky/xmonad
     end
@@ -311,6 +301,19 @@ if [ $CHOICE -eq 13 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     end
 end
 
+if [ $CHOICE -eq 14 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+    if [ -f /usr/share/icons/default/index.theme ]
+        if grep -R "Adwaita" /usr/share/icons/default/index.theme > /dev/null
+            echo "Setting breeze_cursors cursor theme."
+            sudo sed -i 's/Adwaita/breeze_cursors/' /usr/share/icons/default/index.theme
+        else
+            echo "Cool breeze_cursors theme already set."
+        end
+    else
+        echo "/usr/share/icons/default/index.theme not found, skipping."
+    end
+end
+
 if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Switch to Advanced conky.
     if [ $CHOICE -eq 20 ]
@@ -486,20 +489,6 @@ if [ $CHOICE -eq 42 ]
     if [ -f $HOME/.config/conky/xmonad/doom-one-01.conkyrc ]
         set OLDCFONTSIZE (grep size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 3 -d "=" | cut -f 1 -d "'" | head -1)
         set CFONTSIZE1 ( echo $OLDCFONTSIZE + 1 | bc )
-        if [ $CFONTSIZE1 -le 20 ]
-            set LINENUMBERS ( grep -n size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 1 -d ":" )
-            set CFONTSIZE2 (printf %.0f (echo "$CFONTSIZE1 * 3.5" | bc))
-            set CFONTSIZE3 (printf %.0f (echo "$CFONTSIZE1 * 1.5" | bc))
-            set CFONTSIZE4 (printf %.0f (echo "$CFONTSIZE1 * 1.1" | bc))
-            sed -i "$LINENUMBERS[1] s/size=[0-9]*/size=$CFONTSIZE1/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[2] s/size=[0-9]*/size=$CFONTSIZE2/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[3] s/size=[0-9]*/size=$CFONTSIZE3/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[4] s/size=[0-9]*/size=$CFONTSIZE4/" $HOME/.config/conky/xmonad/*.conkyrc
-            echo "Conky font increased to $CFONTSIZE1."
-        else
-            echo "Xmobar font limited to $OLDCFONTSIZE."
-            echo "Font size unchanged."
-        end
     else
         echo "Conky theme files not found."
     end
@@ -510,22 +499,25 @@ if [ $CHOICE -eq 43 ]
     if [ -f $HOME/.config/conky/xmonad/doom-one-01.conkyrc ]
         set OLDCFONTSIZE (grep size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 3 -d "=" | cut -f 1 -d "'" | head -1)
         set CFONTSIZE1 ( echo $OLDCFONTSIZE - 1 | bc )
-        if [ $CFONTSIZE1 -ge 4 ]
-            set LINENUMBERS ( grep -n size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 1 -d ":" )
-            set CFONTSIZE2 (printf %.0f (echo "$CFONTSIZE1 * 3.5" | bc))
-            set CFONTSIZE3 (printf %.0f (echo "$CFONTSIZE1 * 1.5" | bc))
-            set CFONTSIZE4 (printf %.0f (echo "$CFONTSIZE1 * 1.1" | bc))
-            sed -i "$LINENUMBERS[1] s/size=[0-9]*/size=$CFONTSIZE1/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[2] s/size=[0-9]*/size=$CFONTSIZE2/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[3] s/size=[0-9]*/size=$CFONTSIZE3/" $HOME/.config/conky/xmonad/*.conkyrc
-            sed -i "$LINENUMBERS[4] s/size=[0-9]*/size=$CFONTSIZE4/" $HOME/.config/conky/xmonad/*.conkyrc
-            echo "Conky font decreased to $CFONTSIZE1."
-        else
-            echo "Xmobar font limited to $OLDCFONTSIZE."
-            echo "Font size unchanged."
-        end
     else
         echo "Conky theme files not found."
+    end
+end
+
+if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ] || [ $CHOICE -eq 42 ] || [ $CHOICE -eq 43 ]
+    if [ $CFONTSIZE1 -ge 4 ] && [ $CFONTSIZE1 -le 20 ]
+        echo "Setting font size $CFONTSIZE1 for Conky."
+        set LINENUMBERS ( grep -n size= $HOME/.config/conky/xmonad/doom-one-01.conkyrc | cut -f 1 -d ":" )
+        set CFONTSIZE2 (printf %.0f (echo "$CFONTSIZE1 * 3.5" | bc))
+        set CFONTSIZE3 (printf %.0f (echo "$CFONTSIZE1 * 1.5" | bc))
+        set CFONTSIZE4 (printf %.0f (echo "$CFONTSIZE1 * 1.1" | bc))
+        sed -i "$LINENUMBERS[1] s/size=[0-9]*/size=$CFONTSIZE1/" $HOME/.config/conky/xmonad/*.conkyrc
+        sed -i "$LINENUMBERS[2] s/size=[0-9]*/size=$CFONTSIZE2/" $HOME/.config/conky/xmonad/*.conkyrc
+        sed -i "$LINENUMBERS[3] s/size=[0-9]*/size=$CFONTSIZE3/" $HOME/.config/conky/xmonad/*.conkyrc
+        sed -i "$LINENUMBERS[4] s/size=[0-9]*/size=$CFONTSIZE4/" $HOME/.config/conky/xmonad/*.conkyrc
+    else
+        echo "Conky font size limited to range 4 to 20."
+        echo "Font size unchanged."
     end
 end
 
