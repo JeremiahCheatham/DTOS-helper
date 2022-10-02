@@ -69,7 +69,7 @@ end
 if [ $CHOICE -eq 11 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Install added themes for QT, GTK2, GKT3 and GTK4
     echo "Install breeze and breeze-gtk."
-    pacman -S --needed breeze breeze-gtk
+    pacman -S --needed breeze breeze-gtk kde-gtk-config
     if [ ! -d $HOME/.config/conky/xmonad ]
         mkdir -p $HOME/.config/conky/xmonad
     end

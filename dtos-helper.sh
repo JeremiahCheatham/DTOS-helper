@@ -116,7 +116,7 @@ end
 
 if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 1 ]
     # Make sure missing packages are installed.
-    sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db
+    sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db breeze breeze-gtk kde-gtk-config
 end
 
 if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
@@ -129,12 +129,9 @@ if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
         echo "Installing alsa-utils."
         sudo pacman -S alsa-utils
     end
-
-    if grep -R "sleep 1 && volumeicon" $HOME/.config/xmonad/xmonad.hs > /dev/null
-        echo "Cool volumeicon already fixed."
-    else
-        echo "Fixing volumeicon. You will need a reboot."
-        sudo sed -i 's/"volumeicon"/"sleep 1 \&\& volumeicon"/' $HOME/.config/xmonad/xmonad.hs
+    if pacman -Q pipewire-pulse | grep "pipewire-pulse" >/dev/null
+        echo "Making sure pipewire-pulse is enabled."
+        systemctl --user enable pipewire-pulse --now
     end
 end
 
@@ -469,6 +466,7 @@ if [ $CHOICE -eq 40 ]
         echo "Cool pulseaudio or pipewire-pulse already installed."
     else
         sudo pacman -S pipewire-pulse
+        systemctl --user enable pipewire-pulse --now
     end
     if grep -R 'pactl -- set-sink-volume @DEFAULT_SINK@ +5' $HOME/.config/xmonad/xmonad.hs > /dev/null
         echo "Cool pactl -- set-sink-volume @DEFAULT_SINK@ +5% is already in xmonad.hs."
