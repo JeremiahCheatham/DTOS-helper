@@ -54,10 +54,10 @@ conky.config = {
 
 	--Textual
 	format_human_readable = true,				-- KiB, MiB rather then number of bytes
-	font  = 'Noto Sans:bold:size=11',  	-- the default font used
-	font2 = 'Noto Sans:bold:size=38',         	-- font for the time
-	font3 = 'Noto Sans:size=16',               	-- font for the date
-	font4 = 'Noto Sans:bold:size=12',              -- font for the keybindings heading
+	font  = 'Noto Sans:bold:size=8',  	-- the default font used
+	font2 = 'Noto Sans:bold:size=28',         	-- font for the time
+	font3 = 'Noto Sans:size=12',               	-- font for the date
+	font4 = 'Noto Sans:bold:size=9',              -- font for the keybindings heading
 	max_text_width = 0,							-- 0 will make sure line does not get broken if width too smal
 	max_user_text = 16384,						-- max text in conky default 16384
 	override_utf8_locale = true,				-- force UTF8 requires xft
@@ -88,7 +88,7 @@ conky.config = {
 	color4 = '#F99157',
 	color5 = '#99C794',
 
-	lua_load = '$HOME/.local/bin/cpu.lua,
+	lua_load = '$HOME/.local/bin/cpu.lua',
 };
 
 conky.text = [[
