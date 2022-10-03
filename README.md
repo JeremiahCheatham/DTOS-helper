@@ -78,3 +78,16 @@ fish dtos-theme.sh
    -------------- QUIT ----------------
 50 Quit
 ```
+# Firefox
+## about:config
+`network.trr.default_provider_uri    https://94.140.14.14/dns-query`    Used adguards dns over https, blocks ads & trackers. \
+`network.trr.mode    3`    Force only dns over https. No fallback to unsecured dns. \
+`gfx.webrender.all    true`    Firefox Compositing WebRender hardware acceleration. \
+`media.ffmpeg.vaapi.enabled    true`
+## Add-ons and themes
+set theme to dark.
+## Extensions
+uBlock Origins (block ads even youtube) \
+SponsorBlock (block youtube sponsors) \
+I still don't care about cookies (Automatically denies cookies and stops popups EU) \
+h264ify (force h264 video codec youtube for older hardware)
