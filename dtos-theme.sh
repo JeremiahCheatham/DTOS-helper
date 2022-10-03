@@ -410,13 +410,13 @@ end
 if [ $CHOICE -ge 30 ] && [ $CHOICE -le 38 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     if [ -f $HOME/.gtkrc-2.0 ]
         echo "Settings GTK2 theme to $GTKTHEME."
-        sed -i "s/^gtk-theme-name=/gtk-theme-name=\"$GTKTHEME\"/" $HOME/.gtkrc-2.0
+        sed -i "s/^gtk-theme-name=.*/gtk-theme-name=\"$GTKTHEME\"/" $HOME/.gtkrc-2.0
     else
         echo "$HOME/.gtkrc-2.0 file not founds, skipping."
     end
     if [ -f $HOME/.config/gtk-3.0/settings.ini ]
         echo "Settings GTK3 theme to $GTKTHEME"
-        sed -i "s/^gtk-theme-name=/gtk-theme-name=$GTKTHEME/" $HOME/.config/gtk-3.0/settings.ini
+        sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$GTKTHEME/" $HOME/.config/gtk-3.0/settings.ini
     else
         echo "$HOME/.config/gtk-3.0/settings.ini file not found, skipping."
     end
