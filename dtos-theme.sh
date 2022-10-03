@@ -11,6 +11,7 @@ echo "11 Install Theme addons for QT, GTK2/3/4."
 echo "12 Create config files for QT, GTK2/3/4."
 echo "13 Set Systems fonts to Noto Sans & Hack"
 echo "14 Switch Adwaita to breeze_cursors."
+echo "15 Let qt5ct handle QT themes."
 echo "   ----------- CHANGE CONKY -----------"
 echo "20 Switch to Advanced Conky."
 echo "21 Advanced Conky with Hotkeys."
@@ -311,6 +312,17 @@ if [ $CHOICE -eq 14 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
         end
     else
         echo "/usr/share/icons/default/index.theme not found, skipping."
+    end
+end
+
+if [ $CHOICE -eq 15 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+    # Let QT apps use the KDE theme and font.
+    if grep -R "QT_QPA_PLATFORMTHEME=qt5ct" /etc/environment > /dev/null
+        echo "Cool QT_QPA_PLATFORMTHEME=qt5ct is already in /etc/environment."
+    else
+        echo "Adding QT_QPA_PLATFORMTHEME=qt5ct to /etc/environment."
+        sudo fish -c "echo 'QT_QPA_PLATFORMTHEME=qt5ct' >> /etc/environment"
+        echo "A reboot is probably needed."
     end
 end
 
