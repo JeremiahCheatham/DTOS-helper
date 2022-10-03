@@ -54,6 +54,7 @@ fish dtos-theme.sh
 12 Create config files for QT, GTK2/3/4.
 13 Set Systems fonts to Noto Sans & Hack
 14 Switch Adwaita to breeze_cursors.
+15 Let qt5ct handle QT themes.
    ----------- CHANGE CONKY -----------
 20 Switch to Advanced Conky.
 21 Advanced Conky with Hotkeys.
