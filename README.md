@@ -16,7 +16,7 @@ fish dtos-theme.sh
 13 Configure lz4 zram with double size.
 14 Disable annoying pcspkr beeps.
    ----------- DTOS Fixes ------------
-20 Install missing packages package.
+20 Install missing packages.
 21 Fix volumeicon & missing alsa-utils.
 22 Enable bluetooth with blueman-applet.
 23 Enable Backlight keys with flashText.
@@ -27,14 +27,14 @@ fish dtos-theme.sh
 28 Fix dm-translate typo & switch to lingva.
 29 Fix dm-colpick typo.
    ------- GridSelect Menu Apps ------
-30 Install needed Games packages
-31 Install needed Education packages
-32 Install needed Internet packages
-33 Install needed Multimedia packages
-34 Install needed Office packages
-35 Install needed Settings packages
-36 Install needed System packages
-37 Install needed Utilities packages
+30 Install needed Games packages.
+31 Install needed Education packages.
+32 Install needed Internet packages.
+33 Install needed Multimedia packages.
+34 Install needed Office packages.
+35 Install needed Settings packages.
+36 Install needed System packages.
+37 Install needed Utilities packages.
    -------------- Other ----------------
 40 Use pulseaudio for extended volume.
 41 Disable NaturalScrolling direction.
