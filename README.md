@@ -70,8 +70,8 @@ fish dtos-theme.sh
 37 Set Doom Solarized Dark Theme.
 38 Set Doom Tomorrow Night Theme.
    -------- CHANGE FONTS SIZE ---------
-40 Increase Xmobar font size.
-41 Decrease Xmobar font size.
+40 Increase Xmobar/Dmenu font size.
+41 Decrease Xmobar/Dmenu font size.
 42 Increase Conky font size.
 43 Decrease Conky font size.
 44 Set the Systems font size.
