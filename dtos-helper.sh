@@ -129,9 +129,19 @@ if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
         echo "Installing alsa-utils."
         sudo pacman -S alsa-utils
     end
+    
+    # Make sure if pipewire-pulse is installed enable it.
     if pacman -Q pipewire-pulse | grep "pipewire-pulse" >/dev/null
         echo "Making sure pipewire-pulse is enabled."
         systemctl --user enable pipewire-pulse --now
+    end
+    
+    # volumeicon needs a time out to start.
+    if grep -R "sleep 2 && volumeicon" $HOME/.config/xmonad/xmonad.hs > /dev/null
+        echo "Cool volumeicon already fixed."
+    else
+        echo "Fixing volumeicon. You will need a reboot."
+        sudo sed -i 's/"volumeicon"/"sleep 2 \&\& volumeicon"/' $HOME/.config/xmonad/xmonad.hs
     end
 end
 
