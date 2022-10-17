@@ -12,7 +12,7 @@ fish dtos-theme.sh
    --------- ArchLinux Fixes ---------
 10 Let sudo use wheel group.
 11 Enable ParallelDownloads.
-12 Install git, nano and pacman-contrib.
+12 Install git, nano, ntfs-3g and pacman-contrib.
 13 Configure lz4 zram with double size.
 14 Disable annoying pcspkr beeps.
    ----------- DTOS Fixes ------------
