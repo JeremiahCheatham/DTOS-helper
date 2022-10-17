@@ -10,7 +10,7 @@ echo "2  Reset DTOS from /etc/dtos folder."
 echo "   --------- ArchLinux Fixes ---------"
 echo "10 Let sudo use wheel group."
 echo "11 Enable ParallelDownloads."
-echo "12 Install git, nano and pacman-contrib."
+echo "12 Install git, nano, ntfs-3g and pacman-contrib."
 echo "13 Configure lz4 zram with double size."
 echo "14 Disable annoying pcspkr beeps."
 echo "   ----------- DTOS Fixes ------------"
@@ -83,7 +83,7 @@ end
 if [ $CHOICE -eq 12 ]
     # install missing archlinux packages.
     echo "Installing missing archlinux packages."
-    sudo pacman -S --needed git nano pacman-contrib
+    sudo pacman -S --needed git nano ntfs-3g pacman-contrib
 end
 
 if [ $CHOICE -eq 13 ]
@@ -116,7 +116,7 @@ end
 
 if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 1 ]
     # Make sure missing packages are installed.
-    sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db breeze breeze-gtk kde-gtk-config
+    sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db breeze breeze-gtk kde-gtk-config xarchiver
 end
 
 if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
