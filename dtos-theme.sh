@@ -39,10 +39,15 @@ echo "50 Quit"
 read CHOICE
 echo ""
 
+if [ ! $CHOICE ]
+    set CHOICE 0
+    echo "Choose a number between 1 and 50."
+end
+
 if [ $CHOICE -eq 1 ]
     # Preset for 1080x1920 14inch
     set NEWFONTSIZE 14
-    set NEWXFONTSIZE 14
+    set NEW_XMOBAR_SIZE 13
     set CFONTSIZE1 11
     set VCFONTSIZE 24
 end
@@ -50,7 +55,7 @@ end
 if [ $CHOICE -eq 2 ]
     # Preset for 768x1366 14inch
     set NEWFONTSIZE 10
-    set NEWXFONTSIZE 10
+    set NEW_XMOBAR_SIZE 10
     set CFONTSIZE1 8
     set VCFONTSIZE 18
 end
@@ -70,7 +75,7 @@ end
 if [ $CHOICE -eq 11 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Install added themes for QT, GTK2, GKT3 and GTK4
     echo "Install breeze and breeze-gtk."
-    pacman -S --needed breeze breeze-gtk kde-gtk-config
+    sudo pacman -S --needed breeze breeze-gtk kde-gtk-config plasma-framework5
     if [ ! -d $HOME/.config/conky/xmonad ]
         mkdir -p $HOME/.config/conky/xmonad
     end
@@ -431,9 +436,8 @@ end
 if [ $CHOICE -eq 40 ]
     # Increase Xmobar font size.
     if [ -f $HOME/.config/xmobar/doom-one-xmobarrc ]
-        set OLDXFONTSIZE ( grep weight $HOME/.config/xmobar/doom-one-xmobarrc | cut -d "=" -f 4 | cut -d ":" -f 1 )
-        set NEWXFONTSIZE ( echo $OLDXFONTSIZE + 1 | bc )
-        set LGXFONTSIZE ( echo $OLDXFONTSIZE + 2 | bc )
+        set OLD_XMOBAR_SIZE ( grep 'Config { font' $HOME/.config/xmobar/doom-one-xmobarrc | grep -o '[0-9]*[0-9]"' | cut -d '"' -f 1 )
+        set NEW_XMOBAR_SIZE ( echo $OLD_XMOBAR_SIZE + 1 | bc )
     else
         echo "Xmobar theme file not found."
     end
@@ -442,9 +446,8 @@ end
 if [ $CHOICE -eq 41 ]
     # Decrease Xmobar font size.
     if [ -f $HOME/.config/xmobar/doom-one-xmobarrc ]
-        set OLDXFONTSIZE ( grep weight $HOME/.config/xmobar/doom-one-xmobarrc | cut -d "=" -f 4 | cut -d ":" -f 1 )
-        set NEWXFONTSIZE ( echo $OLDXFONTSIZE - 1 | bc )
-        set LGXFONTSIZE $OLDXFONTSIZE
+        set OLD_XMOBAR_SIZE ( grep 'Config { font' $HOME/.config/xmobar/doom-one-xmobarrc | grep -o '[0-9]*[0-9]"' | cut -d '"' -f 1 )
+        set NEW_XMOBAR_SIZE ( echo $OLD_XMOBAR_SIZE - 1 | bc )
     else
         echo "Xmobar theme file not found."
     end
@@ -452,46 +455,48 @@ end
 
 if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ] || [ $CHOICE -eq 40 ] || [ $CHOICE -eq 41 ]
     # Xmobar font size for presets.
-    if [ $NEWXFONTSIZE -le 20 ]
-        if [ $NEWXFONTSIZE -ge 8 ]
-            echo "Setting font size $NEWXFONTSIZE for Xmobar."
-            set LINENUMBERS (grep -n pixelsize= $HOME/.config/xmobar/doom-one-xmobarrc | cut -f 1 -d ":")
-            set LGXFONTSIZE ( echo $NEWXFONTSIZE + 1 | bc )
-            sed -i "$LINENUMBERS[1] s/pixelsize=[0-9]*/pixelsize=$NEWXFONTSIZE/" $HOME/.config/xmobar/*-xmobarrc
-            sed -i "$LINENUMBERS[2] s/pixelsize=[0-9]*/pixelsize=$NEWXFONTSIZE/" $HOME/.config/xmobar/*-xmobarrc
-            sed -i "$LINENUMBERS[3] s/pixelsize=[0-9]*/pixelsize=$LGXFONTSIZE/" $HOME/.config/xmobar/*-xmobarrc
-            sed -i "$LINENUMBERS[4] s/pixelsize=[0-9]*/pixelsize=$LGXFONTSIZE/" $HOME/.config/xmobar/*-xmobarrc
+    if [ $NEW_XMOBAR_SIZE -le 20 ]
+        if [ $NEW_XMOBAR_SIZE -ge 8 ]
+            echo "Setting font size $NEW_XMOBAR_SIZE for Xmobar."
+            set OLD_XMOBAR_FONT ( sed '/Config { font/,/]/!d' $HOME/.config/xmobar/doom-one-xmobarrc | grep '"' | cut -d '"' -f 2 )
+            set NEW_XMOBAR_FONT ( sed '/Config { font/,/]/!d' $HOME/.config/xmobar/doom-one-xmobarrc | grep '"' | cut -d '"' -f 2 | grep -o "[a-Z]*[a-Z0-9 ]*[a-Z]" )
+            set DMENU_SIZE ( echo "$NEW_XMOBAR_SIZE * 1.35" | bc | cut -d "." -f 1 )
+            sed -i "s/$OLD_XMOBAR_FONT[1]/$NEW_XMOBAR_FONT[1] $NEW_XMOBAR_SIZE/" $HOME/.config/xmobar/*-xmobarrc
+            sed -i "s/$OLD_XMOBAR_FONT[2]/$NEW_XMOBAR_FONT[2] $NEW_XMOBAR_SIZE/" $HOME/.config/xmobar/*-xmobarrc
+            sed -i "s/$OLD_XMOBAR_FONT[3]/$NEW_XMOBAR_FONT[3] $NEW_XMOBAR_SIZE/" $HOME/.config/xmobar/*-xmobarrc
+            sed -i "s/$OLD_XMOBAR_FONT[4]/$NEW_XMOBAR_FONT[4] $NEW_XMOBAR_SIZE/" $HOME/.config/xmobar/*-xmobarrc
+            
 
             # Dmenu Font Size
-            echo "Setting font size $LGXFONTSIZE for dmenu."
+            echo "Setting font size $DMENU_SIZE for dmenu."
             if grep -R "swn_font" $HOME/.config/xmonad/xmonad.hs | grep "Ubuntu" > /dev/null
-                set LGXFONT "Ubuntu"
+                set DMENU_FONT "Ubuntu"
             else
-                set LGXFONT "NotoSans"
+                set DMENU_FONT "NotoSans"
             end
             if grep -R "pixelsize=" $HOME/.config/dmscripts/config > /dev/null
-                sed -i "s/pixelsize=[0-9]*/pixelsize=$LGXFONTSIZE/" $HOME/.config/dmscripts/config
+                sed -i "s/pixelsize=[0-9]*/pixelsize=$DMENU_SIZE/" $HOME/.config/dmscripts/config
             else
-                sed -i "s/dmenu -i -l 20 -p/dmenu -fn xft:$LGXFONT:weight=bold:pixelsize=$LGXFONTSIZE:antialias=true:hinting=true -i -l 20 -p/" $HOME/.config/dmscripts/config
+                sed -i "s/dmenu -i -l 20 -p/dmenu -fn xft:$DMENU_FONT:weight=bold:pixelsize=$DMENU_SIZE:antialias=true:hinting=true -i -l 20 -p/" $HOME/.config/dmscripts/config
             end
 
             if grep -R "pixelsize=" $HOME/.local/bin/dm-run > /dev/null
-                sed -i "s/pixelsize=[0-9]*/pixelsize=$LGXFONTSIZE/" $HOME/.local/bin/dm-run
+                sed -i "s/pixelsize=[0-9]*/pixelsize=$DMENU_SIZE/" $HOME/.local/bin/dm-run
             else
-                sed -i "s/dmenu -l 20 -g/dmenu -fn xft:$LGXFONT:weight=bold:pixelsize=$LGXFONTSIZE:antialias=true:hinting=true -l 20 -g/" $HOME/.local/bin/dm-run
+                sed -i "s/dmenu -l 20 -g/dmenu -fn xft:$DMENU_FONT:weight=bold:pixelsize=$DMENU_SIZE:antialias=true:hinting=true -l 20 -g/" $HOME/.local/bin/dm-run
             end
 
             if grep -R "passmenu -p" $HOME/.config/xmonad/xmonad.hs > /dev/null
-                sed -i "s/passmenu -p/passmenu -fn xft:$LGXFONT:weight=bold:pixelsize=$LGXFONTSIZE:antialias=true:hinting=true -p/" $HOME/.config/xmonad/xmonad.hs
+                sed -i "s/passmenu -p/passmenu -fn xft:$DMENU_FONT:weight=bold:pixelsize=$DMENU_SIZE:antialias=true:hinting=true -p/" $HOME/.config/xmonad/xmonad.hs
             else
-                sed -i "s/pixelsize=[0-9]*/pixelsize=$LGXFONTSIZE/" $HOME/.config/xmonad/xmonad.hs
+                sed -i "s/pixelsize=[0-9]*/pixelsize=$DMENU_SIZE/" $HOME/.config/xmonad/xmonad.hs
             end
         else
-            echo "Xmobar font limited to $OLDXFONTSIZE."
+            echo "Xmobar font limited to $OLD_XMOBAR_SIZE."
             echo "Font size unchanged."
         end
     else
-        echo "Xmobar font limited to $OLDXFONTSIZE."
+        echo "Xmobar font limited to $OLD_XMOBAR_SIZE."
         echo "Font size unchanged."
     end
 end

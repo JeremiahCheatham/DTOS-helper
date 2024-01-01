@@ -10,7 +10,7 @@ echo "2  Reset DTOS from /etc/dtos folder."
 echo "   --------- ArchLinux Fixes ---------"
 echo "10 Let sudo use wheel group."
 echo "11 Enable ParallelDownloads."
-echo "12 Install git, nano, ntfs-3g and pacman-contrib."
+echo "12 Install git, nano, neovim, ntfs-3g and pacman-contrib."
 echo "13 Configure lz4 zram with double size."
 echo "14 Disable annoying pcspkr beeps."
 echo "   ----------- DTOS Fixes ------------"
@@ -43,6 +43,11 @@ echo "50 Quit"
 
 read CHOICE
 echo ""
+
+if [ ! $CHOICE ]
+    set CHOICE 0
+    echo "Choose a number between 1 and 50."
+end
 
 ################################# Archlinux ######################################
 
@@ -83,7 +88,8 @@ end
 if [ $CHOICE -eq 12 ]
     # install missing archlinux packages.
     echo "Installing missing archlinux packages."
-    sudo pacman -S --needed git nano ntfs-3g pacman-contrib
+    sudo pacman -S --needed git nano neovim ntfs-3g pacman-contrib
+    echo
 end
 
 if [ $CHOICE -eq 13 ]
@@ -117,6 +123,7 @@ end
 if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 1 ]
     # Make sure missing packages are installed.
     sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db breeze breeze-gtk kde-gtk-config xarchiver
+    echo
 end
 
 if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
@@ -128,6 +135,7 @@ if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
     else
         echo "Installing alsa-utils."
         sudo pacman -S alsa-utils
+	echo
     end
     
     # Make sure if pipewire-pulse is installed enable it.
@@ -155,6 +163,7 @@ if [ $CHOICE -eq 22 ] || [ $CHOICE -eq 1 ]
     else
         echo "Installing blueman."
         sudo pacman -S blueman
+	echo
     end
 
     echo "Enabling bluetooth service."
@@ -237,6 +246,7 @@ if [ $CHOICE -eq 23 ] || [ $CHOICE -eq 1 ]
     else
         echo "Installing light."
         sudo pacman -S light
+	echo
     end
 
     # You need to be in Video group for light to change screen brightness.
@@ -299,6 +309,7 @@ if [ $CHOICE -eq 25 ] || [ $CHOICE -eq 1 ]
     else
         echo "Installing notification-daemon."
         sudo pacman -S notification-daemon
+	echo
     end
 
     # Launch notification-daemon
