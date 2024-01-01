@@ -122,7 +122,7 @@ end
 
 if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 1 ]
     # Make sure missing packages are installed.
-    sudo pacman -S --needed alsa-utils moc pass qt5ct youtube-dl man-db breeze breeze-gtk kde-gtk-config xarchiver
+    sudo pacman -S --needed alsa-utils pass qt5ct man-db breeze breeze-gtk kde-gtk-config xarchiver
     echo
 end
 
