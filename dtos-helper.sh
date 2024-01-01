@@ -233,7 +233,7 @@ if [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 1 ]
     end
     if not grep -R "handleTimerEvent" $HOME/.config/xmonad/xmonad.hs > /dev/null
         echo "Adding handleTimerEvent to handleEventHook."
-        sed -i '/--, handleEventHook    = docks/a\    , handleEventHook    = handleTimerEvent' $HOME/.config/xmonad/xmonad.hs > /dev/null
+        sed -i 's/handleEventHook    =/handleEventHook    = handleTimerEvent <>/' $HOME/.config/xmonad/xmonad.hs > /dev/null
     else
         echo "Cool handleTimerEvent found in handleEventHook."
     end
