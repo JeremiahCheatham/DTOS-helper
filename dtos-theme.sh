@@ -64,6 +64,7 @@ if [ $CHOICE -eq 3 ]
     # Reset DTOS from /etc/dtos.
     echo "Resetting DTOS from /etc/dtos folder."
     /bin/cp -r /etc/dtos/.* $HOME/
+    /bin/cp $HOME/.config/xmonad/xmonad-example-configs/xmonad-with-xmobar.hs $HOME/.config/xmonad/xmonad.hs
 end
 
 if [ $CHOICE -eq 10 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
