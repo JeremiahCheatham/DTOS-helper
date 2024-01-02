@@ -1,7 +1,7 @@
 #!/bin/fish
 
 clear
-echo "   ---------- DTOS Theme 1.5 ----------"
+echo "   ---------- DTOS Theme 1.6 ----------"
 echo "1  1080x1920 14in Font/Theme Preset."
 echo "2  768x1366 14in Fonts/Theme Preset."
 echo "3  Reset DTOS from /etc/dtos folder."
@@ -12,6 +12,8 @@ echo "12 Create config files for QT, GTK2/3/4."
 echo "13 Set Systems fonts to Noto Sans & Hack"
 echo "14 Switch Adwaita to breeze_cursors."
 echo "15 Let qt5ct handle QT themes."
+echo "16 Remove Notify, Kernel, Uptime from Xmobar." 
+echo "17 Set Trayer Size to 24."
 echo "   ----------- CHANGE CONKY -----------"
 echo "20 Switch to Advanced Conky."
 echo "21 Advanced Conky with Hotkeys."
@@ -47,7 +49,7 @@ end
 if [ $CHOICE -eq 1 ]
     # Preset for 1080x1920 14inch
     set NEWFONTSIZE 14
-    set NEW_XMOBAR_SIZE 13
+    set NEW_XMOBAR_SIZE 12
     set CFONTSIZE1 11
     set VCFONTSIZE 24
 end
@@ -55,7 +57,7 @@ end
 if [ $CHOICE -eq 2 ]
     # Preset for 768x1366 14inch
     set NEWFONTSIZE 10
-    set NEW_XMOBAR_SIZE 10
+    set NEW_XMOBAR_SIZE 9
     set CFONTSIZE1 8
     set VCFONTSIZE 18
 end
@@ -329,6 +331,42 @@ if [ $CHOICE -eq 15 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
         echo "Adding QT_QPA_PLATFORMTHEME=qt5ct to /etc/environment."
         sudo fish -c "echo 'QT_QPA_PLATFORMTHEME=qt5ct' >> /etc/environment"
         echo "A reboot is probably needed."
+    end
+end
+
+if [ $CHOICE -eq 16 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+    echo "Removing Notify, Kernel and Uptime from Xmobar."
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%messages%  <action=`alacritty -e nvim .log/notify.log`>%notify-log%</action></fc></box>    @@" $HOME/.config/xmobar/doom-one-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#51afef><fc=#51afef>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/doom-one-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/doom-one-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#bd93f9><fc=#bd93f9>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/dracula-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#ff79c6><fc=#ff79c6>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/dracula-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#d3869b><fc=#d3869b>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/gruvbox-dark-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#b16286><fc=#b16286>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/gruvbox-dark-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#FF6188><fc=#FF6188>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/monokai-pro-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#AB9DF2><fc=#AB9DF2>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/monokai-pro-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#8FBCBB><fc=#8FBCBB>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/nord-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#B48EAD><fc=#B48EAD>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/nord-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#EC5f67><fc=#EC5f67>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/oceanic-next-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#c594c5><fc=#c594c5>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/oceanic-next-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#82aaff><fc=#82aaff>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/palenight-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#c3e88d><fc=#c3e88d>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/palenight-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/solarized-dark-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#d33682><fc=#d33682>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/solarized-dark-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#dc322f><fc=#dc322f>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/solarized-light-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#d33682><fc=#d33682>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/solarized-light-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#f7768e><fc=#f7768e>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/tokyo-night-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#bb9af7><fc=#bb9af7>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/tokyo-night-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#cc6666><fc=#cc6666>%penguin%  %kernel%</fc></box>    @@" $HOME/.config/xmobar/tomorrow-night-xmobarrc
+    sed -i "s@<box type=Bottom width=2 mb=2 color=#b294bb><fc=#b294bb>%uparrow%  %uptime%</fc></box>    @@" $HOME/.config/xmobar/tomorrow-night-xmobarrc
+end
+
+if [ $CHOICE -eq 17 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+    if grep -R "--height 24" $HOME/.config/xmonad/xmonad.hs > /dev/null
+        echo "Cool Trayer size already set to 24."
+    else
+        echo "Setting Trayer size to 24."
+        sed -i 's/--height 22/--height 24/' $HOME/.config/xmonad/xmonad.hs > /dev/null
     end
 end
 

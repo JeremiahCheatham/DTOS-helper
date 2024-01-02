@@ -4,13 +4,13 @@
 # sudo pacman -S --needed breeze breeze-gtk kde-gtk-config plasma-framework
 
 clear
-echo "   --------- DTOS Helper 1.5 ---------"
+echo "   --------- DTOS Helper 1.6 ---------"
 echo "1  Run all DTOS Fixes."
 echo "2  Reset DTOS from /etc/dtos folder."
 echo "   --------- ArchLinux Fixes ---------"
 echo "10 Let sudo use wheel group."
 echo "11 Enable ParallelDownloads."
-echo "12 Install git, nano, neovim, ntfs-3g and pacman-contrib."
+echo "12 Install bc, git, nano, neovim, ntfs-3g and pacman-contrib."
 echo "13 Configure lz4 zram with double size."
 echo "14 Disable annoying pcspkr beeps."
 echo "   ----------- DTOS Fixes ------------"
@@ -55,6 +55,7 @@ if [ $CHOICE -eq 2 ]
     # Reset DTOS from /etc/dtos.
     echo "Resetting DTOS from /etc/dtos folder."
     /bin/cp -r /etc/dtos/.* $HOME/
+    /bin/cp $HOME/.config/xmonad/xmonad-example-configs/xmonad-with-xmobar.hs $HOME/.config/xmonad/xmonad.hs
 end
 
 if [ $CHOICE -eq 10 ]
@@ -88,7 +89,7 @@ end
 if [ $CHOICE -eq 12 ]
     # install missing archlinux packages.
     echo "Installing missing archlinux packages."
-    sudo pacman -S --needed git nano neovim ntfs-3g pacman-contrib
+    sudo pacman -S --needed bc git nano neovim ntfs-3g pacman-contrib
     echo
 end
 
@@ -143,13 +144,20 @@ if [ $CHOICE -eq 21 ] || [ $CHOICE -eq 1 ]
         echo "Making sure pipewire-pulse is enabled."
         systemctl --user enable pipewire-pulse --now
     end
+
+    if grep -R 'spawn "killall volumeicon"' $HOME/.config/xmonad/xmonad.hs > /dev/null
+        echo "Cool killall volumeicon already added."
+    else
+        echo "Adding killall volumeicon."
+        sed -i '/^  spawn "killall polybar"/a\  spawn "killall volumeicon"' $HOME/.config/xmonad/xmonad.hs
+    end
     
     # volumeicon needs a time out to start.
-    if grep -R "sleep 2 && volumeicon" $HOME/.config/xmonad/xmonad.hs > /dev/null
+    if grep -R 'spawn "sleep 2 && volumeicon"' $HOME/.config/xmonad/xmonad.hs > /dev/null
         echo "Cool volumeicon already fixed."
     else
-        echo "Fixing volumeicon. You will need a reboot."
-        sudo sed -i 's/"volumeicon"/"sleep 2 \&\& volumeicon"/' $HOME/.config/xmonad/xmonad.hs
+        echo "Adding sleep to volumeicon."
+        sudo sed -i 's/spawnOnce "volumeicon"/spawn "sleep 2 \&\& volumeicon"/' $HOME/.config/xmonad/xmonad.hs
     end
 end
 
@@ -543,7 +551,7 @@ EOF'
     echo "You may need to reboot to see changes."
 end
 
-if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 27 ] || [ $CHOICE -eq 29 ] || [ $CHOICE -eq 40 ]
+if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ] || [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 27 ] || [ $CHOICE -eq 29 ] || [ $CHOICE -eq 40 ]
     xmonad --restart
 end
 
