@@ -24,15 +24,17 @@ echo "26 Touchpad support with Naturalscrolling."
 echo "27 Set Firefox as default browser."
 echo "28 Fix dm-translate typo & switch to lingva."
 echo "29 Fix dm-colpick typo."
+echo "30 Remove swallowEventHook for terminals."
+echo "31 Make sure dmscript revisions match."
 echo "   ------- GridSelect Menu Apps ------"
-echo "30 Install needed Games packages."
-echo "31 Install needed Education packages."
-echo "32 Install needed Internet packages."
-echo "33 Install needed Multimedia packages."
-echo "34 Install needed Office packages."
-echo "35 Install needed Settings packages."
-echo "36 Install needed System packages."
-echo "37 Install needed Utilities packages."
+echo "32 Install needed Games packages."
+echo "33 Install needed Education packages."
+echo "34 Install needed Internet packages."
+echo "35 Install needed Multimedia packages."
+echo "36 Install needed Office packages."
+echo "37 Install needed Settings packages."
+echo "38 Install needed System packages."
+echo "39 Install needed Utilities packages."
 echo "   -------------- Other ----------------"
 echo "40 Use pulseaudio for extended volume."
 echo "41 Disable NaturalScrolling direction."
@@ -389,9 +391,30 @@ if [ $CHOICE -eq 29 ] || [ $CHOICE -eq 1 ]
     end
 end
 
+if [ $CHOICE -eq 30 ] || [ $CHOICE -eq 1 ]
+    # Remove swallowEventHook for terminals
+    if grep -R '<> swallowEventHook' $HOME/.config/xmonad/xmonad.hs > /dev/null
+        echo 'Removing swallowEventHook for terminals.'
+        sed -i 's@<> swallowEventHook (className =? "Alacritty"  <||> className =? "st-256color" <||> className =? "XTerm") (return True) @@' ~/.config/xmonad/xmonad.hs
+    else
+        echo 'Cool swallowEventHook already removed.'
+    end
+end
+
+if [ $CHOICE -eq 31 ] || [ $CHOICE -eq 1 ]
+    # make sure dmscript revision numbers match.
+    set REVISION ( grep -R "_revision=[0-9]" /etc/dmscripts/config )
+    if grep -R $REVISION ~/.config/dmscripts/config > /dev/null
+        echo "Cool dmscripts revision numbers match."
+    else
+        echo "Setting dmscripts to $REVISION"
+        sed -i "s/_revision=[0-9]*/$REVISION/" ~/.config/dmscripts/config
+    end
+end
+
 ############################# GridSelect Menu Apps ##############################
 
-if [ $CHOICE -eq 30 ]
+if [ $CHOICE -eq 32 ]
     # Install missing Game GridSelect Menu packages.
 
     if grep -R '"OpenArena"' $HOME/.config/xmonad/xmonad.hs > /dev/null
@@ -445,7 +468,7 @@ if [ $CHOICE -eq 30 ]
     end
 end
 
-if [ $CHOICE -eq 31 ]
+if [ $CHOICE -eq 33 ]
     # Install missing Education GridSelect Menu packages.
     sudo pacman -S --needed gcompris-qt kstars minuet
 
@@ -457,32 +480,32 @@ if [ $CHOICE -eq 31 ]
     end
 end
 
-if [ $CHOICE -eq 32 ]
+if [ $CHOICE -eq 34 ]
     # Install missing Internet GridSelect Menu packages. AUR brave lbry mailspring zoom
     sudo pacman -S --needed discord element-desktop firefox nextcloud qutebrowser transmission-gtk
 end
 
-if [ $CHOICE -eq 33 ]
+if [ $CHOICE -eq 35 ]
     # Install missing Multimedia GridSelect Menu packages.
     sudo pacman -S --needed audacity blender kdenlive obs-studio vlc
 end
 
-if [ $CHOICE -eq 34 ]
+if [ $CHOICE -eq 36 ]
     # Install missing Office GridSelect Menu packages.
     sudo pacman -S --needed evince libreoffice-fresh
 end
 
-if [ $CHOICE -eq 35 ]
+if [ $CHOICE -eq 37 ]
     # Install missing Settings GridSelect Menu packages.
     sudo pacman -S --needed arandr lxappearance sudo gufw
 end
 
-if [ $CHOICE -eq 36 ]
+if [ $CHOICE -eq 38 ]
     # Install missing System GridSelect Menu packages.
     sudo pacman -S --needed alacritty pcmanfm virtualbox virtualbox-host-modules-arch virt-manager
 end
 
-if [ $CHOICE -eq 37 ]
+if [ $CHOICE -eq 39 ]
     # Install missing Utilities GridSelect Menu packages.
     sudo pacman -S --needed emacs nitrogen
 end
@@ -551,7 +574,7 @@ EOF'
     echo "You may need to reboot to see changes."
 end
 
-if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ] || [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 27 ] || [ $CHOICE -eq 29 ] || [ $CHOICE -eq 40 ]
+if [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ] || [ $CHOICE -eq 23 ] || [ $CHOICE -eq 24 ] || [ $CHOICE -eq 27 ] || [ $CHOICE -eq 29 ] || [ $CHOICE -eq 30 ] || [ $CHOICE -eq 31 ] || [ $CHOICE -eq 40 ]
     xmonad --restart
 end
 

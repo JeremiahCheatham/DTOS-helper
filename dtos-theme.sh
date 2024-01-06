@@ -362,7 +362,7 @@ if [ $CHOICE -eq 16 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
 end
 
 if [ $CHOICE -eq 17 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
-    if grep -R "--height 24" $HOME/.config/xmonad/xmonad.hs > /dev/null
+    if grep -R "\--height 24" $HOME/.config/xmonad/xmonad.hs > /dev/null
         echo "Cool Trayer size already set to 24."
     else
         echo "Setting Trayer size to 24."
