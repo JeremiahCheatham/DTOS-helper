@@ -6,7 +6,7 @@ fish dtos-helper.sh
 fish dtos-theme.sh
 ```
 ```
-   --------- DTOS Helper 1.5 ---------
+   --------- DTOS Helper 1.6 ---------
 1  Run all DTOS Fixes.
 2  Reset DTOS from /etc/dtos folder.
    --------- ArchLinux Fixes ---------
@@ -26,15 +26,17 @@ fish dtos-theme.sh
 27 Set Firefox as default browser.
 28 Fix dm-translate typo & switch to lingva.
 29 Fix dm-colpick typo.
+30 Remove swallowEventHook for terminals.
+31 Make sure dmscript revisions match.
    ------- GridSelect Menu Apps ------
-30 Install needed Games packages.
-31 Install needed Education packages.
-32 Install needed Internet packages.
-33 Install needed Multimedia packages.
-34 Install needed Office packages.
-35 Install needed Settings packages.
-36 Install needed System packages.
-37 Install needed Utilities packages.
+32 Install needed Games packages.
+33 Install needed Education packages.
+34 Install needed Internet packages.
+35 Install needed Multimedia packages.
+36 Install needed Office packages.
+37 Install needed Settings packages.
+38 Install needed System packages.
+39 Install needed Utilities packages.
    -------------- Other ----------------
 40 Use pulseaudio for extended volume.
 41 Disable NaturalScrolling direction.
@@ -44,7 +46,7 @@ fish dtos-theme.sh
 50 Quit
 ```
 ```
-   ---------- DTOS Theme 1.5 ----------
+   ---------- DTOS Theme 1.6 ----------
 1  1080x1920 14in Font/Theme Preset.
 2  768x1366 14in Fonts/Theme Preset.
 3  Reset DTOS from /etc/dtos folder.
@@ -55,6 +57,8 @@ fish dtos-theme.sh
 13 Set Systems fonts to Noto Sans & Hack
 14 Switch Adwaita to breeze_cursors.
 15 Let qt5ct handle QT themes.
+16 Remove Notify, Kernel, Uptime from Xmobar.
+17 Set Trayer Size to 24.
    ----------- CHANGE CONKY -----------
 20 Switch to Advanced Conky.
 21 Advanced Conky with Hotkeys.
