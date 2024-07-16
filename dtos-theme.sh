@@ -11,7 +11,7 @@ echo "11 Install Theme addons for QT, GTK2/3/4."
 echo "12 Create config files for QT, GTK2/3/4."
 echo "13 Set Systems fonts to Noto Sans & Hack"
 echo "14 Switch Adwaita to breeze_cursors."
-echo "15 Let qt5ct handle QT themes."
+echo "15 Let qt6ct handle QT themes."
 echo "16 Remove Notify, Kernel, Uptime from Xmobar." 
 echo "17 Set Trayer Size to 24."
 echo "   ----------- CHANGE CONKY -----------"
@@ -78,7 +78,7 @@ end
 if [ $CHOICE -eq 11 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Install added themes for QT, GTK2, GKT3 and GTK4
     echo "Install breeze and breeze-gtk."
-    sudo pacman -S --needed breeze breeze-gtk kde-gtk-config plasma-framework5
+    sudo pacman -S --needed breeze breeze-gtk kde-gtk-config libplasma
     if [ ! -d $HOME/.config/conky/xmonad ]
         mkdir -p $HOME/.config/conky/xmonad
     end
@@ -109,45 +109,45 @@ if [ $CHOICE -eq 12 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     /bin/cp /usr/share/plasma/desktoptheme/breeze-dark/colors $HOME/.config/kdeglobals
     sed -i "/\KDE\]/a LookAndFeelPackage=org.kde.breezedark.desktop" $HOME/.config/kdeglobals
 
-    if [ ! -f $HOME/.config/qt5ct/qt5ct.conf ]
+    if [ ! -f $HOME/.config/qt6ct/qt6ct.conf ]
     end
-    # Qt5ct theme $HOME/.config/qt5ct/qt5ct.conf.
-    if [ ! -d $HOME/.config/qt5ct ]
-        mkdir $HOME/.config/qt5ct
+    # Qt6ct theme $HOME/.config/qt6ct/qt6ct.conf.
+    if [ ! -d $HOME/.config/qt6ct ]
+        mkdir $HOME/.config/qt6ct
     end
-    echo "Generating qt5ct theme config."
-    echo '[Appearance]' > $HOME/.config/qt5ct/qt5ct.conf
-    echo 'color_scheme_path=/usr/share/qt5ct/colors/airy.conf' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'custom_palette=false' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'icon_theme=breeze-dark' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'standard_dialogs=default' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'style=Breeze' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '[Interface]' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'activate_item_on_single_click=1' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'buttonbox_layout=0' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'cursor_flash_time=1000' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'dialog_buttons_have_icons=1' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'double_click_interval=400' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'gui_effects=@Invalid()' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'keyboard_scheme=2' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'menus_have_icons=true' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'show_shortcuts_in_context_menus=true' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'stylesheets=@Invalid()' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'toolbutton_style=4' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'underline_shortcut=1' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'wheel_scroll_lines=3' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '[SettingsWindow]' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo "geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\x10\0\0\0(\0\0\x3\xb7\0\0\x4'\0\0\0\x12\0\0\0*\0\0\x3\xb5\0\0\x4%\0\0\0\0\0\0\0\0\a\x80\0\0\0\x12\0\0\0*\0\0\x3\xb5\0\0\x4%)" >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '[Troubleshooting]' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'force_raster_widgets=1' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'ignored_applications=@Invalid()' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo '[Fonts]' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-    echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+    echo "Generating qt6ct theme config."
+    echo '[Appearance]' > $HOME/.config/qt6ct/qt6ct.conf
+    echo 'color_scheme_path=/usr/share/qt6ct/colors/airy.conf' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'custom_palette=false' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'icon_theme=breeze-dark' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'standard_dialogs=default' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'style=Breeze' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '[Interface]' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'activate_item_on_single_click=1' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'buttonbox_layout=0' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'cursor_flash_time=1000' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'dialog_buttons_have_icons=1' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'double_click_interval=400' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'gui_effects=@Invalid()' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'keyboard_scheme=2' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'menus_have_icons=true' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'show_shortcuts_in_context_menus=true' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'stylesheets=@Invalid()' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'toolbutton_style=4' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'underline_shortcut=1' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'wheel_scroll_lines=3' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '[SettingsWindow]' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo "geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\x10\0\0\0(\0\0\x3\xb7\0\0\x4'\0\0\0\x12\0\0\0*\0\0\x3\xb5\0\0\x4%\0\0\0\0\0\0\0\0\a\x80\0\0\0\x12\0\0\0*\0\0\x3\xb5\0\0\x4%)" >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '[Troubleshooting]' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'force_raster_widgets=1' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'ignored_applications=@Invalid()' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo '[Fonts]' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+    echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
 
     # GTK 4.0 Theme $HOME/.config/gtk-4.0/settings.ini
     if [ ! -d $HOME/.config/gtk-4.0 ]
@@ -325,11 +325,11 @@ end
 
 if [ $CHOICE -eq 15 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
     # Let QT apps use the KDE theme and font.
-    if grep -R "QT_QPA_PLATFORMTHEME=qt5ct" /etc/environment > /dev/null
-        echo "Cool QT_QPA_PLATFORMTHEME=qt5ct is already in /etc/environment."
+    if grep -R "QT_QPA_PLATFORMTHEME=qt6ct" /etc/environment > /dev/null
+        echo "Cool QT_QPA_PLATFORMTHEME=qt6ct is already in /etc/environment."
     else
-        echo "Adding QT_QPA_PLATFORMTHEME=qt5ct to /etc/environment."
-        sudo fish -c "echo 'QT_QPA_PLATFORMTHEME=qt5ct' >> /etc/environment"
+        echo "Adding QT_QPA_PLATFORMTHEME=qt6ct to /etc/environment."
+        sudo fish -c "echo 'QT_QPA_PLATFORMTHEME=qt6ct' >> /etc/environment"
         echo "A reboot is probably needed."
     end
 end
@@ -397,7 +397,7 @@ if [ $CHOICE -eq 20 ] || [ $CHOICE -eq 22 ]
     sed -i '/-04.conkyrc/d' $HOME/.config/xmonad/xmonad.hs
 end
 
-if [ $CHOICE -eq 30 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+if [ $CHOICE -eq 30 ]
     # Set variables for theme.
     set GTKTHEME "Doom-One"
     set KDETHEME "DoomOne.colors"
@@ -451,7 +451,13 @@ if [ $CHOICE -eq 38 ]
     set KDETHEME "DoomTomorrowNight.colors"
 end
 
-if [ $CHOICE -ge 30 ] && [ $CHOICE -le 38 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
+if [ $CHOICE -eq 39 ]
+    # Set variables for theme.
+    set GTKTHEME "Breeze-Dark"
+    set KDETHEME "BreezeDark.colors"
+end
+
+if [ $CHOICE -ge 30 ] && [ $CHOICE -le 39 ]
     if [ -f $HOME/.gtkrc-2.0 ]
         echo "Settings GTK2 theme to $GTKTHEME."
         sed -i "s/^gtk-theme-name=.*/gtk-theme-name=\"$GTKTHEME\"/" $HOME/.gtkrc-2.0
@@ -647,60 +653,60 @@ if [ $CHOICE -eq 44 ] || [ $CHOICE -eq 1 ] || [ $CHOICE -eq 2 ]
         echo "$HOME/.config/xsettingsd/xsettingsd file not founds, skipping."
     end
 
-    # Set qt5ct font size.
+    # Set qt6ct font size.
     if [ -f $HOME/.config/xsettingsd/xsettingsd.conf ]
-        echo "Setting font size $NEWFONTSIZE in $HOME/.config/qt5ct/qt5ct.conf."
-        sed -i '/\[Fonts\]/d' $HOME/.config/qt5ct/qt5ct.conf
-        sed -i '/fixed=/d' $HOME/.config/qt5ct/qt5ct.conf
-        sed -i '/general=/d' $HOME/.config/qt5ct/qt5ct.conf
-        echo '[Fonts]' >> $HOME/.config/qt5ct/qt5ct.conf
+        echo "Setting font size $NEWFONTSIZE in $HOME/.config/qt6ct/qt6ct.conf."
+        sed -i '/\[Fonts\]/d' $HOME/.config/qt6ct/qt6ct.conf
+        sed -i '/fixed=/d' $HOME/.config/qt6ct/qt6ct.conf
+        sed -i '/general=/d' $HOME/.config/qt6ct/qt6ct.conf
+        echo '[Fonts]' >> $HOME/.config/qt6ct/qt6ct.conf
 
         if [ $NEWFONTSIZE -eq 6 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\x18\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\x18\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\x18\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\x18\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 7 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\x1c\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\x1c\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\x1c\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\x1c\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 8 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@ \0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@ \0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@ \0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@ \0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 9 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\"\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\"\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@\"\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@\"\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 10 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@$\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 11 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@&\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@&\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@&\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@&\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 12 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 14 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@,\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@,\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@,\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@,\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 16 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@0\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@0\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@0\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@0\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 18 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@2\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@2\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@2\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@2\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
         if [ $NEWFONTSIZE -eq 20 ]
-            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@4\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
-            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@4\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt5ct/qt5ct.conf
+            echo 'fixed=@Variant(\0\0\0@\0\0\0\b\0H\0\x61\0\x63\0k@4\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
+            echo 'general=@Variant(\0\0\0@\0\0\0\x12\0N\0o\0t\0o\0 \0S\0\x61\0n\0s@4\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)' >> $HOME/.config/qt6ct/qt6ct.conf
         end
     else
-        echo "$HOME/.config/qt5ct/qt5ct.conf file not found, skipping."
+        echo "$HOME/.config/qt6ct/qt6ct.conf file not found, skipping."
     end
 
     # Set QT/KDE font size.
